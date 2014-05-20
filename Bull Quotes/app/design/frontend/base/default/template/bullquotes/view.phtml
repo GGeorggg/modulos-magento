@@ -1,0 +1,81 @@
+﻿<?php
+$_product			= $this->getProduct();
+$capital 			= $_product->getFinalPrice();
+$numParcelas 		= Mage::helper('bullquotes')->getNumberQuotes($capital);
+
+?>
+
+<div class='block block-bullquotes'>
+	<div class='block-title'>
+		<strong><?php echo $this->__('Parcele em até %sX sem juros', $numParcelas)?></strong>
+	</div>
+    
+	<div class='block-content'>
+	<div class='col2-set'>
+		<div class='col-1'>
+			<ul>
+				<?php for($i=1; $i <= $numParcelas/2; $i++): ?>
+					<?php $nQuote = sprintf("%02d", $i)?>
+					<?php $_price = Mage::helper('core')->currency(Mage::helper('bullquotes')->getValueQuote($capital,$i)) ?>
+					
+					<li>
+						 
+						<strong><?php echo $this->__('<u>%s</u> x ', $nQuote) ?></strong>
+						<span><?php echo $this->__('sem juros')?></span>
+						<strong> <?php echo $_price?> </strong>
+					</li>
+				<?php endfor; ?>
+			</ul> 
+		</div>
+		<div class='col-2'>
+			<ul>
+				<?php for($i=($numParcelas/2)+1; $i <= $numParcelas; $i++): ?>
+					<?php $nQuote = sprintf("%02d", $i)?>
+					<?php $_price = Mage::helper('core')->currency(Mage::helper('bullquotes')->getValueQuote($capital,$i)) ?>
+					
+					<li>
+						 
+						<strong><?php echo $this->__('<u>%s</u> x ', $nQuote) ?></strong>
+						<span><?php echo $this->__('sem juros')?></span>
+						<strong> <?php echo $_price?> </strong>
+					</li>
+				<?php endfor; ?>
+			</ul> 
+		</div>
+	</div>
+	</div>
+	<script type='text/javascript'>
+	//<![CDATA[
+	jQuery(document).ready(function(e) {
+		jQuery('.product-options select').change(function(e) { 
+		   var  priceCurrent = jQuery('.price-box .price').text().substr(2,1000);
+				priceCurrent = priceCurrent.replace(",", ".");
+				priceCurrent = parseFloat(priceCurrent);
+			
+			var parcelas = <?php echo $numParcelas ?>;
+			var $_html = '';
+			
+			$_html += '<dl>';
+			var i;
+			var finalPrice;
+			
+			for(i=1; i<=parcelas; i++ ){
+					finalPrice = priceCurrent / i;
+					finalPrice = number_format(finalPrice,2, ',', '.');
+					
+				$_html += '<dt><strong><div class="n-parcela">0' + i + '</div> <div class="d-parcela">x</div></strong></dt>';
+				$_html += '<dd><span class="currency">R$</span> <span class="price">'+ finalPrice +'</span> </dd>';
+			}
+			
+			$_html += '</dl>';
+			
+			//alert('teste');
+			jQuery('.table-quotes').html($_html);
+			
+		});
+	});
+	//]]>
+	</script>
+</div>
+
+

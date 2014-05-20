@@ -1,0 +1,6 @@
+<?php if( Mage::getStoreConfig('payment/pay/include_jquery', Mage::app()->getStore()) ): ?>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">jQuery.noConflict()</script>
+<?php endif ?>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('pay/js/jquery.creditCardValidator.js') ?>"></script>
+

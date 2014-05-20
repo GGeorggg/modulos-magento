@@ -1,0 +1,147 @@
+﻿<?php
+/**
+ * aheadWorks Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://ecommerce.aheadworks.com/LICENSE-M1.txt
+ *
+ * @category   AW
+ * @package    AW_Boughttogether
+ * @copyright  Copyright (c) 2003-2010 aheadWorks Co. (http://www.aheadworks.com)
+ * @license    http://ecommerce.aheadworks.com/LICENSE-M1.txt
+ */
+?>
+<?php
+$__TH = Mage::helper('tax');
+$__simplePricesTax = ($__TH->displayPriceIncludingTax() || $__TH->displayBothPrices());
+$_items = $this->getItems();
+$__btCount = count($_items->getItems());
+?>
+<?php if (($__btCount) or (count($this->_optionalProducts) > 0)): ?>
+    <?php $_item = $this->_thisProduct; $__btPrice = Mage::app()->getStore()->convertPrice($__TH->getPrice($_item, $_item->getFinalPrice(), $__simplePricesTax)); ?>
+    <div class="box-collateral aw-boughttogether">
+	<div class="collateral-box">
+            <div class="page-title">
+                <h2><?php echo $this->__('<strong>Compre</strong> Junto') ?></h2>
+            </div>
+
+            <div class="content" id="__bt_Content">
+                <div class='enjoy-container'>
+                    <div class='enjoy-product'>
+                        <ul class='products-grid'>					
+                            <li id="__bt_product_<?php print $_item->getId() ?>_TD" class='item <?php $_key = 0; if ($__btCount > 0): ?>more-item<?php endif; ?>'>
+                                <?php if($_item->isSaleable()): ?>
+                                <?php $_priceCurrency = $_item->getFinalPrice() ?>
+                                <div class="checkbox-container no-display">
+                                    <input type="checkbox" checked class="related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" onclick="return bt_itemClick('<?php echo $_item->getId() ?>');" <?php if ($_item->isComposite()) echo 'style="display:none;"';?> />
+                                </div>
+                                <?php else: ?>
+                                    <span class="checkbox-container">&nbsp;</span>
+                                <?php endif; ?>
+                                    
+                                <div class="product-images">
+                                    <a href="<?php echo $_item->getProductUrl() ?>">
+                                        <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(190,145) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" width="190" height="145" />
+                                    </a>
+                                </div>
+                                <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h3>
+                                    <?php echo Mage::helper('bullquotes')->getListHtml($_item) ?>
+                            </li>
+                        </ul>
+                        
+                            <?php echo ($__btCount > 3) ? '<a class="prev-carousel arrow" href="#">&lt;</a>' : '' ?>
+                        
+                        <ul class='products-grid grid-related<?php echo ($__btCount > 3) ? 'carousel' : '' ?>'>					
+                            <?php foreach ($_items as $_item): $__btPrice += Mage::app()->getStore()->convertPrice($__TH->getPrice($_item, $_item->getFinalPrice(), $__simplePricesTax)); ?>
+                                <li item='<?php echo $_item->getId() ?>' id="__bt_product_<?php print $_item->getId() ?>_TD" class='item <?php if(!$_item->isSaleable()): ?>super-products<?php endif; ?> <?php $_key++; if ($_key < $__btCount): ?>more-item<?php endif; ?>'>
+                                    <?php if($_item->isSaleable()): ?>
+                                        <div class="checkbox-container">
+                                            <input type="checkbox" checked class="related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" onclick="return bt_itemClick('<?php echo $_item->getId() ?>');" />
+                                        </div>
+                                    <?php else: ?>
+                                        <span class="checkbox-container">&nbsp;</span>
+                                    <?php endif; ?>
+
+                                    <div class="product-images">
+                                        <a href="<?php echo $_item->getProductUrl() ?>">
+                                            <img src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(190,145) ?>" alt="<?php echo $this->htmlEscape($_item->getName()) ?>" width="190" height="145" />
+                                        </a>
+                                    </div>
+
+                                    <h3 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->htmlEscape($_item->getName()) ?></a></h3>
+                                    <?php echo Mage::helper('bullquotes')->getListHtml($_item) ?>
+                                </li>
+                            <?php endforeach ?>
+                        </ul>
+                        
+                        <?php echo ($__btCount > 3) ? '<a class="next-carousel arrow" href="#">&gt;</a>' : '' ?>
+                        <div class='clearer'></div>
+                    </div>
+                    <?php $_discount = ( ($__btPrice - $_priceCurrency ) / 100 ) * $this->getPercentDiscount(); ?>
+                    <?php $priceDiscount = $__btPrice - $_discount; ?>
+                    <?php $parcela = Mage::helper('bullquotes')->getNumberQuotes($priceDiscount) ?>
+                    <?php $valor = Mage::helper('bullquotes')->getValueQuote($priceDiscount, $parcela) ?>
+                    <div id="__bt_totalPriceTD">
+                        <div id="__bt_totalPrice">
+                            <strong><?php echo $this->__('Preço total : %s', Mage::helper('core')->currency($__btPrice) ) ?></strong>
+                        </div>
+                        
+                        <div class='discount'>
+                            <span><?php echo $this->__('Comprando junto você economiza:')?></span>
+                            <span id='__bt_discountPrice'><?php echo Mage::helper('core')->currency($_discount) ?></span>
+                            <span><?php echo $this->__('em até %sx de %s sem juros', $parcela, $valor)?></span>
+                        </div>
+                        
+                        <button class="form-button button btn-cart btn-green" type="button" onclick="bt_addToCart();"><span><span><?php echo $this->__('Comprar junto') ?></span></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('.products-grid.carousel').carouFredSel({
+                items: 3,
+                auto: false,
+                prev: '.prev-carousel',
+                next: '.next-carousel',
+                direction			: "right",
+                scroll : {
+                    items			: 1,
+                    easing			: "elastic",
+                    duration		: 1000,
+                    pauseOnHover	: true
+                }
+            });
+        });
+    </script>
+<script> 
+
+        var bt_IDs = [<?php print $this->_thisProduct->getId(); ?><?php foreach($_items as $_item) print ', ' . $_item->getId(); ?>];
+        var bt_Prices = [<?php print Mage::app()->getStore()->convertPrice($__TH->getPrice($this->_thisProduct, $this->_thisProduct->getFinalPrice(), $__simplePricesTax)); ?><?php foreach($_items as $_item) print ', ' . Mage::app()->getStore()->convertPrice($__TH->getPrice($_item, $_item->getFinalPrice(), $__simplePricesTax)); ?>];
+        var __bt_AnimSpeed = 15 / (1 + 4 * ($_.ie ? 1 : 0));
+
+        
+       
+
+        if (typeof(opConfig) != 'undefined'){
+            opConfig.oldReloadPrice = opConfig.reloadPrice;
+            opConfig.reloadPrice = function(){
+                opConfig.oldReloadPrice();
+                
+                if (typeof(bt_Prices) != 'undefined'){
+                    bt_Prices[0] = optionsPrice.productPrice + price;
+                    __bt_calculatePrice();
+                    
+                    alert( bt_Prices[0]);
+                    
+                     
+                }
+            }
+        }
+</script>
+<?php endif; ?>

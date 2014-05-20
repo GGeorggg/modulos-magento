@@ -1,0 +1,113 @@
+<?php $_code	= $this->getMethodCode() ?>
+<?php $ensigns 	= $this->getEnsign() ?>
+<?php $inst_qty	= $this->getInstallmentQty() ?>
+<ul class="form-list" id="payment_form_<?php echo $_code ?>" style="display:none;">
+    <li>
+		<div class="input-box">
+			<div class="input-box">
+				<label for="<?php echo $_code ?>_card_name" class="required"><em>*</em><?php echo $this->__('Card Name') ?></label>
+				<input type="text" title="<?php echo $this->__('Card Name') ?>" class="input-text required-entry" id="<?php echo $_code ?>_card_name" name="payment[card_name]" value="" />
+			</div>
+		</div>
+	</li>
+    <li>
+		<div class="input-box">
+			<div class="input-box">
+				<label for="<?php echo $_code ?>_card_ensign" class="required"><em>*</em><?php echo $this->__('Card Ensign') ?></label>
+				<select class="input-text required-entry" id="<?php echo $_code ?>_card_ensign" name="payment[card_ensign]">
+				<?php foreach($ensigns as $ensign ): ?>
+					<option value="<?php echo $ensign['label']?>"><?php echo $ensign['label']?></option>
+				<?php endforeach?>
+				</select>
+				
+			</div>
+		</div>
+	</li>
+	<li>
+		<div class="input-box">
+			
+			<div class="input-box">
+				<label for="<?php echo $_code ?>_card_number" class="required"><em>*</em><?php echo $this->__('Card Number') ?></label>
+				<input type="text" title="<?php echo $this->__('Card Number') ?>" class="input-text cardnum required-entry" id="<?php echo $_code ?>_card_number" name="payment[card_number]" value="" />
+			</div>
+			
+			<script>
+			jQuery(document).ready(function(e) {
+				//jQuery('.verify').hide();
+				var error;
+				jQuery('.cardnum, #pay_card_ensign').blur(function(){
+					jQuery(this).validateCreditCard(function(result){
+						
+						if (result.luhn_valid){
+							if( ( result.card_type.name == "visa" && jQuery('#pay_card_ensign').val() == "Visa" ) || ( result.card_type.name == "mastercard" && jQuery('#pay_card_ensign').val() == "MasterCard" ) ){
+								jQuery('.remove-card-error').remove();
+								error = false;
+							}else {
+								jQuery('.remove-card-error').remove();
+								jQuery('.cardnum').after('<div class="validation-advice remove-card-error" id="advice-required-entry-pay_card_number"><?php echo $this->__('Card Number Invalid') ?></div>');
+								error = true;
+							}
+						}else {
+							jQuery('.remove-card-error').remove();
+							jQuery('.cardnum').after('<div class="validation-advice remove-card-error" id="advice-required-entry-pay_card_number"><?php echo $this->__('Card Number Invalid') ?></div>');
+							error = true;
+						}
+					}); 
+					
+					if (error){
+						jQuery('.cardnum').val('');
+					}
+				});
+				
+			});
+			</script>
+		</div>
+	</li>
+	<li class='fields'>
+		
+		<div class="v-fix">
+			<label for="<?php echo $_code ?>_month_expiry" class="required"><em>*</em><?php echo $this->__('Month Expiry') ?></label><br />
+			<select id="<?php echo $_code ?>_month_expiry" name="payment[month_expiry]" class="month required-entry">
+                <?php foreach ($this->getMonths() as $key => $months): ?>
+                    <option value="<?php echo $months ?>"><?php echo $months ?></option>
+                <?php endforeach ?>
+             </select>
+		</div>
+        
+		<div class="v-fix">
+			<label for="<?php echo $_code ?>_year_expiry" class="required"><em>*</em><?php echo $this->__('Year Expiry') ?></label><br />
+			<select id="<?php echo $_code ?>_year_expiry" name="payment[year_expiry]" class="year required-entry">
+                <?php foreach ($this->getYear() as $years): ?>
+                    <option value="<?php echo $years ?>"><?php echo $years ?></option>
+				<?php endforeach ?>
+			</select>
+        </div>
+	</li>
+	<li>
+        <div class="input-box">
+			
+            <div class="v-fix">
+                <label for="<?php echo $_code ?>_secret_number" class="required"><em>*</em><?php echo $this->__('Secret Number') ?></label>
+				<input type="text" title="<?php echo $this->__('Card Verification Number') ?>" class="input-text required-entry cid" id="<?php echo $_code ?>_secret_number" name="payment[secret_number]"/>
+            </div><br />
+            <a href="#" class="cvv-what-is-this"><?php echo $this->__('What is this?') ?></a>
+        </div>
+    </li>
+
+	<li>
+		<div class="input-box">
+			<label for="<?php echo $_code ?>_installment_qty" class="required"><em>*</em><?php echo $this->__('Installment Qty') ?></label>
+			<div class="input-box">
+				<select class="input-text required-entry" id="<?php echo $_code ?>_installment_qty" name="payment[installment_qty]">
+					<option value="1"><?php echo $this->__('1 installment')?></option>
+					<?php for($_i=2;$_i<=$inst_qty; $_i++): ?>
+						<option value="<?php echo $_i ?>"><?php echo $this->__('%s installments', $_i)?></option>
+					<?php endfor ?>
+				</select>
+			</span>
+		</div>
+	</li>
+</ul>
+<div>
+    <?php echo $this->getMethod()->getConfigData('message');?>
+</div>

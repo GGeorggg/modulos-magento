@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<config>
+	<tabs>
+		<bullmkt translate="label">
+			<label>Bull Extension</label>
+			<sort_order>400</sort_order>
+		</bullmkt>
+	</tabs>
+	<sections>
+		<bullquotes translate="label" module="bullquotes">
+			<label>Bull Quotes</label>
+			<tab>bullmkt</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<settings translate="label">
+				<label>Bull Quotes Settings</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>1</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>				
+					<number_quotes translate="label">
+						<label>Number Quotes</label>
+						<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+					</number_quotes>
+					<value_min translate="label">
+						<label>Valor Minimo da Parcela</label>
+						<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+					</value_min>
+					<taxa translate="label">
+						<label>Taxa</label>
+						<comment></comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+					</taxa>
+				</fields>
+				</settings>
+			</groups>
+		</bullquotes>
+	</sections>
+</config>

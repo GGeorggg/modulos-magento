@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magentando_AddCouponToCart>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Magentando_AddCouponToCart>
+    </modules>
+</config>

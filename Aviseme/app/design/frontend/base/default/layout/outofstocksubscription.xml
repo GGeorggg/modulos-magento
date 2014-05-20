@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+	<default> 
+		<reference name="head">
+			<block name="outofstocksubscription.head" type="page/html" template="outofstocksubscription/head.phtml" after="-" />
+		</reference>
+	</default>
+
+	<catalog_product_view>
+        <reference name="product.info.extrahint">
+            <block type="catalog/product_view" name="outofstocksubscription.view" template="outofstocksubscription/view.phtml"  />
+        </reference>
+    </catalog_product_view> 
+	
+	<outofstocksubscription_register_form>
+		<reference name="root">
+        	<action method="setTemplate"><template>page/empty.phtml</template></action>
+		</reference>
+		<reference name="content">
+        	<block type="outofstocksubscription/register" name="outofstocksubscription.register" template="outofstocksubscription/form.phtml"/>
+		</reference>
+	</outofstocksubscription_register_form>
+	
+	<outofstocksubscription_success_index>
+		<reference name="root">
+        	<action method="setTemplate"><template>page/empty.phtml</template></action>
+		</reference>
+		<reference name="content">
+        	<block type="outofstocksubscription/register" name="outofstocksubscription.register" template="outofstocksubscription/success.phtml"/>
+		</reference>
+	</outofstocksubscription_success_index>
+	
+	<outofstocksubscription_error_index>
+		<reference name="root">
+        	<action method="setTemplate"><template>page/empty.phtml</template></action>
+		</reference>
+		<reference name="content">
+        	<block type="outofstocksubscription/register" name="outofstocksubscription.register" template="outofstocksubscription/error.phtml"/>
+		</reference>
+	</outofstocksubscription_error_index>
+	
+	<outofstocksubscription_error_mail>
+		<reference name="root">
+        	<action method="setTemplate"><template>page/empty.phtml</template></action>
+		</reference>
+		<reference name="content">
+        	<block type="outofstocksubscription/register" name="outofstocksubscription.register" template="outofstocksubscription/error-mail.phtml"/>
+		</reference>
+	</outofstocksubscription_error_mail>
+	
+	
+</layout>

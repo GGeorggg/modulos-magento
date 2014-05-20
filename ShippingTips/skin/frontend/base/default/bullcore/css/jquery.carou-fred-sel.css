@@ -1,0 +1,40 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Bullmkt
+ * @package     Bullmkt_Core
+ * @copyright   Copyright (c) 2013 Bull Marketing <http://www.bullmarketing.com.br>
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Leandro Rosa <dev.leandrorosa@gmail.com>
+ * @author      Tiago Silva <tg.solucoesweb@gmail.com>
+ *
+ */
+
+#intro {width: 580px;	margin: 0 auto;	}
+.list_carousel {background-color: #ccc;margin: 0 0 30px 60px;width: 360px;}
+.list_carousel ul {margin: 0;padding: 0;list-style: none;display: block;}
+.list_carousel li {font-size: 40px;color: #999;text-align: center;background-color: #eee;border: 5px solid #999;width: 50px;height: 50px;padding: 0;margin: 6px;display: block;	float: left;}
+.list_carousel.responsive {width: auto;margin-left: 0;}
+.clearfix {float: none;clear: both;}
+.prev {float: left;margin-left: 10px;}
+.next {float: right;margin-right: 10px;}
+.pager {float: left;width: 300px;text-align: center;}
+.pager a {margin: 0 5px;text-decoration: none;}
+.pager a.selected {text-decoration: underline;}
+.timer {background-color: #999;height: 6px;width: 0px;}

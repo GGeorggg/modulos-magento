@@ -1,0 +1,81 @@
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+.outofstocksubscription label {	font-size: 18px;text-align: center;	display: block;color: #9C9C9C;padding-bottom: 10px;border-bottom: 1px solid #E2E2E2;margin-bottom: 20px; }
+
+.outofstocksubscription .input-text {
+	width: 415px !important;
+	font-size: 18px !important;
+	padding: 10px 5px !important;
+	border: 1px solid #E2E2E2;
+	background: #F9F9F9 !important;
+	color:#9c9c9c;
+	display: block;
+	text-align: center;	
+	/* CSS3  */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.outofstocksubscription button{}
+.outofstocksubscription button span {background: none; border: none; display:block;}
+.outofstocksubscription button span span {
+	background:#EBBC58; 
+	font-size:16px;
+	padding:8px 15px;
+	color:#fff;
+	position:relative;
+	/* CSS3  */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	border-radius: 10px;
+		
+}
+.outofstocksubscription button > span {}
+
+.out-success-msg {}
+.close-lightbox {
+	display: block;
+	padding: 5px 15px;
+	background: #990000;
+	float: right;
+	text-decoration: none;
+	color: #fff;
+	/* CSS3  */
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	-ms-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+.product-view .outlightbox-btn {padding: 10px; background: #3DB44E; border: 1px solid #2DA23E; color: #FFF; display: block; margin-right: 5px; float: left; font-size: 16px;}
+
+.products-grid .outlightbox-btn {font-size: 12px; color: #3DB44E; font-weight: 700; letter-spacing: -1px;}

@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * Todos direitos reservados para Thirdlevel | ThirdLevel All Rights Reserved
+ *
+ * @company   	ThirdLevel
+ * @package    	MercadoLivre
+ * @author      André Fuhrman (andrefuhrman@gmail.com)
+ * @copyright  	Copyright (c) ThirdLevel [http://www.thirdlevel.com.br]
+ * 
+ */
+-->
+<config>
+    <menu>
+        <mercadolivre translate="title" module="mercadolivre">
+            <title>Mercado Livre</title>
+            <sort_order>88</sort_order>
+            <children>
+                <itens translate="title" module="mercadolivre">
+                    <title>Ads Manager</title>
+                    <sort_order>1</sort_order>
+                    <action>mercadolivre/adminhtml_item/index</action>
+                </itens>
+                <question translate="title" module="mercadolivre">
+                    <title>Answer Question</title>
+                    <sort_order>2</sort_order>
+                    <action>mercadolivre/adminhtml_question/index</action>
+                </question>
+                <template translate="title" module="mercadolivre">
+                    <title>Manage Templates</title>
+                    <sort_order>4</sort_order>
+                    <action>mercadolivre/adminhtml_template/index</action>
+                </template>
+                <order translate="title" module="mercadolivre">
+                    <title>Manage Sales</title>
+                    <sort_order>5</sort_order>
+                    <action>mercadolivre/adminhtml_order/index</action>
+                </order>
+                <service translate="title" module="mercadolivre">
+                    <title>General Information</title>
+                    <sort_order>6</sort_order>
+                    <action>mercadolivre/adminhtml_service/index</action>
+                </service>
+        
+            </children>
+        </mercadolivre>
+    </menu>
+    <acl>
+    <resources>
+      <all>
+      <title>Allow Everything</title>
+      </all>
+      <admin>
+        <children>
+          
+          <system>
+            <children>
+              <config>
+                <children>
+                  <mercadolivre translate="title">
+                    <title>Mercado Livre Configuration</title>
+                    <sort_order>100</sort_order>
+                  </mercadolivre>
+                </children>
+              </config>
+            </children>
+          </system>
+          
+           <mercadolivre>
+          	 <title>Mercadolivre Menu</title>
+             <sort_order>71</sort_order>
+             <children>
+             	<itens>
+                    <title>Ads Manager</title>
+                    <sort_order>1</sort_order>
+                </itens>
+                 <question>
+                    <title>Asnwer Question</title>
+                    <sort_order>2</sort_order>
+                </question>
+                 <template>
+                    <title>Manager Templates</title>
+                    <sort_order>3</sort_order>
+                </template>
+                <order>
+                    <title>Manager Sales</title>
+                    <sort_order>3</sort_order>
+                </order>
+                <service>
+                    <title>Gerenciar Templates</title>
+                    <sort_order>3</sort_order>
+                </service>
+             </children>
+           </mercadolivre>	
+          
+        </children>
+      </admin>
+    </resources>
+  </acl>
+</config>

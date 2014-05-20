@@ -1,0 +1,192 @@
+<?php
+
+/**
+ * Unicode Systems
+ * @category   Uni
+ * @package    Uni_Banner
+ * @copyright  Copyright (c) 2010-2011 Unicode Systems. (http://www.unicodesystems.in)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php 
+$bannerGroupCode 	= $this->getBannerGroupCode(); 
+$data 				= $this->getDataByGroupCode($bannerGroupCode);
+$bannerGroupData 	= $data['group_data'];
+?>
+<?php if ( !empty($bannerGroupData) ): ?>
+
+	<?php
+	$mediaDir 			= $this->getUrl('media');
+	$imagesCollection 	= $this->getImagesCollection($bannerGroupData->getId());
+	$currencyGroup 		= $this->getCurrencyGroup($bannerGroupData->getId());
+	$currencyEffect 	= $this->getCurrencyEffect($currencyGroup->getEffectgroupFk());
+	?>
+
+	<?php if($currencyGroup->getStatus() ): ?>
+		<div class="box_skitter_container <?php echo $currencyGroup->getGroupCode() ?>">
+		<?php if($currencyEffect->getAnimation() ):?>
+			<style type="text/css">
+			.<?php echo $currencyGroup->getGroupCode() ?> .box_skitter_large {width: <?php echo $currencyGroup->getWidtBanner() ?>;}
+			.box_skitter_container.<?php echo $currencyGroup->getGroupCode() ?>{
+				<?php if($currencyGroup->getBackground()):?>
+				background-color: <?php echo $currencyGroup->getBackground() ?>;
+				<?php endif ?>
+				<?php if($currencyGroup->getFilename()):?>
+				background-image: url(<?php echo $mediaDir .$currencyGroup->getFilename() ?>);
+				<?php endif ?>
+				background-repeat: <?php echo $currencyGroup->getBackgroundRepeat() ?> ;
+				width: <?php echo $currencyGroup->getWidthContainer() ?>; 
+			}
+			.box_skitter {position:relative;width:<?php echo $currencyGroup->getWidthBanner() ?>;height:<?php echo $currencyGroup->getHeightBanner() ?>; margin:0 auto 40px;}
+			.box_skitter img { heigh:<?php echo $currencyGroup->getHeightBanner() ?>; width:<?php echo $currencyGroup->getWidthBanner() ?>; } /* Tip for stildv */
+			.box_skitter ul {display:none;}
+			.box_skitter .container_skitter {overflow:hidden;position:relative;}
+			.box_skitter .image {overflow:hidden;}
+			.box_skitter .image img {display:none;}
+			</style>
+			<script>
+			jQuery(document).ready(function(){
+				jQuery(".box_skitter_large").skitter({
+					<?php if($currencyEffect->getAnimateNumberActive()): ?>
+					animateNumberActive		: {<?php echo $currencyEffect->getAnimateNumberActive() ?>}, 
+					<?php endif ?>
+					<?php if($currencyEffect->getAnimateNumberOut()): ?>
+					animateNumberOut		: {<?php echo $currencyEffect->getAnimateNumberOut() ?>}, 
+					<?php endif ?>
+					<?php if($currencyEffect->getAnimateNumberOver()): ?>
+					animateNumberOver		: {<?php echo $currencyEffect->getAnimateNumberOver() ?>},
+					<?php endif ?>
+					<?php if($currencyEffect->getEasingDefault()): ?>
+					easing_default			: '<?php echo $currencyEffect->getEasingDefault() ?>',
+					<?php endif ?>
+					<?php if($currencyEffect->getImageSwitched()): ?>
+					imageSwitched			: <?php echo $currencyEffect->getImageSwitched() ?>,
+					<?php endif ?>
+					<?php if($currencyEffect->getInterval()): ?>
+					interval				: <?php echo $currencyEffect->getInterval() ?>,
+					<?php endif ?>
+					<?php if($currencyEffect->getMouseOutButton()): ?>
+					mouseOutButton			: <?php echo $currencyEffect->getMouseOutButton() ?>,
+					<?php endif ?>
+					<?php if($currencyEffect->getMouseOverButton()): ?>
+					mouseOverButton			: <?php echo $currencyEffect->getMouseOverButton() ?>,
+					<?php endif ?>
+					<?php if($currencyEffect->getOnLoad()): ?>
+					onLoad					: <?php echo $currencyEffect->getOnLoad() ?>,
+					<?php endif ?>
+					<?php if($currencyEffect->getProgressbarCss()): ?>
+					progressbar_css			: <?php echo $currencyEffect->getProgressbarCss() ?>,
+					<?php endif ?>
+					<?php if($currencyEffect->getWithAnimations()): ?>
+					with_animations			:  ['<?php echo $currencyEffect->getWithAnimations() ?>'],
+					<?php endif ?>
+					<?php if($currencyEffect->getWidthLabel()): ?>
+					width_label				: '<?php echo $currencyEffect->getWidthLabel() ?>',
+					<?php endif ?>
+					<?php if($currencyEffect->getVelocity()): ?>
+					velocity				: <?php echo $currencyEffect->getVelocity() ?>,
+					<?php endif ?>				
+					animation				: '<?php echo $currencyEffect->getAnimation() ?>',
+					auto_play				: <?php echo $currencyEffect->getAutoPlay() ?>,
+					controls				: <?php echo $currencyEffect->getControls() ?>,
+					controls_position		: '<?php echo $currencyEffect->getControlsPosition() ?>',
+					dots					: <?php echo $currencyEffect->getDots() ?>,
+					enable_navigation_keys	: <?php echo $currencyEffect->getEnableNavigationKeys() ?>,
+					focus					: <?php echo $currencyEffect->getFocus() ?>,
+					focus_position			: '<?php echo $currencyEffect->getFocusPosition() ?>',
+					fullscreen				: <?php echo $currencyEffect->getFullscreen() ?>,
+					hideTools				: <?php echo $currencyEffect->getHideTools() ?>,
+					label					: <?php echo $currencyEffect->getLabel() ?>,
+					labelAnimation			: '<?php echo $currencyEffect->getLabelAnimation() ?>',
+					navigation				: <?php echo $currencyEffect->getNavigation() ?>,
+					numbers					: <?php echo $currencyEffect->getNumbers() ?>,
+					numbers_align			: '<?php echo $currencyEffect->getNumbersAlign() ?>',
+					preview					: <?php echo $currencyEffect->getPreview() ?>,
+					progressbar				: <?php echo $currencyEffect->getProgressbar() ?>,
+					show_randomly			: <?php echo $currencyEffect->getShowRandomly() ?>,
+					stop_over				: <?php echo $currencyEffect->getStopOver() ?>,
+					theme					: '<?php echo $currencyEffect->getTheme() ?>',
+					thumbs					: <?php echo $currencyEffect->getThumbs() ?>
+				});
+			});
+			</script>
+			
+			<div class="box_skitter box_skitter_large">
+				<ul>
+				<?php foreach($imagesCollection as $item ): ?>
+					<?php $imgUrl = $mediaDir . $item->getFilename() ?>
+					<?php $_product = $this->getCurrencyProduct($item->getEntityFk()) ?>
+					
+					<?php if ($item->getStatus()):?>
+					<li>
+						
+						<?php if(!empty($_product) ):?>
+							<a href="<?php echo $_product->getProductUrl() ?>" target="<?php echo $item->getLinkTarget()?>" title="<?php echo $item->getTitle()?>">
+								<img class="<?php echo $currencyEffect->getAnimation() ?>" src="<?php echo $imgUrl ?>" title="<?php echo $item->getTitle()?>" alt="<?php echo $item->getTitle()?>" />
+							</a>
+						<?php else: ?>
+							<?php if($item->getLink()): ?>
+								<a href="<?php echo $item->getLink() ?>" target="<?php echo $item->getLinkTarget()?>" title="<?php echo $item->getTitle()?>">
+									<img class="<?php echo $currencyEffect->getAnimation() ?>" src="<?php echo $imgUrl ?>" title="<?php echo $item->getTitle()?>" alt="<?php echo $item->getTitle()?>" />
+								</a>
+							<?php else: ?>
+								<img class="<?php echo $currencyEffect->getAnimation() ?>" src="<?php echo $imgUrl ?>" title="<?php echo $item->getTitle()?>" alt="<?php echo $item->getTitle()?>" />	
+							<?php endif; ?>
+						<?php endif; ?>
+							
+						<?php if ( !empty($_product) || $item->getDescription()): ?>
+						<div class="label_text">
+							<?php if(!empty($_product) ):?>
+								<div class="bannerproduct-info">
+									<strong class="bannerproduct-title"><?php echo $_product->getName() ?></strong>
+									<div class="bannerproduct-price">
+										<?php if( $_product->getPrice() != $_product->getFinalPrice() ): ?>
+											<div class="old-price"><?php echo $this->__('De: %s', Mage::helper('core')->currency($_product->getPrice() )) ?></div>
+											<div class="special-price"><?php echo $this->__('Por: %s', Mage::helper('core')->currency( $_product->getFinalPrice() ) )?></div>
+										<?php else: ?>
+											<div class="regular-price"><?php echo Mage::helper('core')->currency($_product->getFinalPrice()) ?></div>
+										<?php endif ?>
+									</div>
+									
+									
+									<?php $qty = 12 ?>
+									<?php $vlr = Mage::helper('core')->currency($_product->getFinalPrice() / $qty) ?>
+									<div class='bannerproduct-parcelas'>
+										<?php echo $this->__('Ou <span class="parcela-qty">%s</span> s/ juros de %s', $qty, $vlr )?>
+									<div>
+								</div>
+							<?php endif ?>
+							
+							<?php if ($item->getDescription() ):?>
+								<div class="banner-description"><?php echo $item->getDescription() ?>
+							<?php endif ?>
+						</div>
+						<?php endif ?>
+					</li>
+					<?php endif ?>
+				<?php endforeach ?>
+				</ul>
+			</div>
+		
+		<?php else: ?>
+			<ul class="banner_noeffect">
+				<?php foreach($imagesCollection as $item ): ?>
+					<?php $imgUrl = $mediaDir . $item->getFilename() ?>
+					<?php if ($item->getStatus()):?>
+					<li>
+						<?php if($item->getLink()): ?>
+							<a href="<?php echo $item->getLink()?>" target="<?php echo $item->getLinkTarget()?>" title="<?php echo $item->getTitle()?>">
+								<img src="<?php echo $imgUrl ?>" title="<?php echo $item->getTitle()?>" alt="<?php echo $item->getTitle()?>" />
+							</a>
+							<?php else: ?>
+							
+							<img src="<?php echo $imgUrl ?>" title="<?php echo $item->getTitle()?>" alt="<?php echo $item->getTitle()?>" />
+						<?php endif ?>
+					</li>
+					<?php endif ?>
+				<?php endforeach ?>
+			</ul>
+		<?php endif?>
+		</div>
+	<?php endif ?>
+<?php endif ?>

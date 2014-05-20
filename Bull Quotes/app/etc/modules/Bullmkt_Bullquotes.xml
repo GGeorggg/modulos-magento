@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Bullmkt_Bullquotes>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Bullmkt_Bullquotes>
+	</modules>
+	
+</config>

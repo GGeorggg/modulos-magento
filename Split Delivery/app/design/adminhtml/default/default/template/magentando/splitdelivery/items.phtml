@@ -1,0 +1,85 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Magentando
+ * @package     Magentando_SplitDelivery
+ * @copyright   Copyright (c) 2014 Magentando <http://www.magentando.com.br>
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @author      Leandro Rosa <dev.leandrorosa@gmail.com>
+ *
+ */
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-products"><?php echo $this->__('Split Delivery')?></h4>
+    </div>
+</div>
+
+<div class="grid np">
+    <div class="hor-scroll">
+        <table cellspacing="0" class="data order-tables">
+            <colgroup><col>
+                <col width="1">
+                <col width="1">
+                <col width="1">
+            </colgroup>
+            <thead>
+            <tr class="headings">
+                <th width="10%"><span class="nobr"><?php echo $this->__('Delivery Day')?></span></th>
+                <th width="30%"><span class="nobr"><?php echo $this->__('Product Name')?></span></th>
+                <th width="70%" class="last"><span class="nobr"><?php echo $this->__('Product Image')?></span></th>
+            </tr>
+            </thead>
+            <tbody class="even">
+
+            <?php foreach ($this->getSplitDelivery() as $item): ?>
+                <tr class="border">
+                    <td>
+                        <div id="order_item_1" class="item-container">
+                            <?php echo $item['deliveryDay'] ?>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div id="order_item_2" class="item-container">
+                            <ul>
+                                <?php foreach (explode(',', $item['productsNames']) as $name):?>
+                                    <li><h4><?php echo $name ?></h4></li>
+                                <?php endforeach ?>
+                            </ul>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div id="order_item_3" class="item-container">
+                            <ul>
+                            <?php foreach (explode(',', $item['productsImages']) as $image):?>
+                                <li style="display: inline-block"><img src="<?php echo $image ?>" /></li>
+                            <?php endforeach ?>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+
+        </table>
+    </div>
+</div>

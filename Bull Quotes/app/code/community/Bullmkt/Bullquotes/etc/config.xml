@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Bullmkt_Bullquotes>
+			<version>0.1.0</version>
+		</Bullmkt_Bullquotes>
+	</modules>
+	
+	<frontend>
+        <routers>
+            <bullquotes>
+                <use>standard</use>
+                <args>
+                    <module>Bullmkt_Bullquotes</module>
+                    <frontName>bullquotes</frontName>
+                </args>
+            </bullquotes>
+        </routers>
+        <layout>
+            <updates>
+                <bullquotes>
+                    <file>bullquotes.xml</file>
+                </bullquotes>
+            </updates>
+        </layout>
+		<translate>
+            <modules>
+                <bullquotes>
+                    <files>
+                        <default>Bullmkt_Bullquotes.csv</default>
+                    </files>
+                </bullquotes>
+            </modules>
+        </translate>
+    </frontend>
+	<admin>
+        <routers>
+			<bullmkt>
+				<use>admin</use>
+				<args>
+					<module>Bullmkt_Bullquotes</module>
+					<frontName>bullquotes</frontName>
+				</args>
+			</bullmkt>
+        </routers>
+    </admin>
+	
+	<global>
+		<models>
+			<bullquotes>
+				<class>Bullmkt_Bullquotes_Model</class>
+			</bullquotes>
+		</models>
+		
+		<blocks>
+			<bullquotes>
+				<class>Bullmkt_Bullquotes_Block</class>
+			</bullquotes>
+		</blocks>
+		
+		<helpers>
+            <bullquotes>
+                <class>Bullmkt_Bullquotes_Helper</class>
+            </bullquotes>
+        </helpers>
+		
+		<resources>
+			<bullquotes_setup>
+				<use>default_setup</use>
+			</bullquotes_setup>
+			
+			<bullquotes_write>
+				<use>default_write</use>
+			</bullquotes_write>
+			
+			<bullquotes_read>
+				<use>default_read</use>
+			</bullquotes_read>
+		</resources>
+	</global>
+	
+
+	<default>
+		<bullquotes>
+			<settings>
+				<number_quotes>12</number_quotes>
+				<value_min>0</value_min>
+				<taxa>0</taxa>
+			</settings>	
+		</bullquotes>
+	</default>	
+</config>

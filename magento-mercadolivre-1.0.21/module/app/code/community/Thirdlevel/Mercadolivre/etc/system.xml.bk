@@ -1,0 +1,762 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ *
+ * NOTICE OF LICENSE
+ *
+ * Todos direitos reservados para Thirdlevel | ThirdLevel All Rights Reserved
+ *
+ * @company   	ThirdLevel
+ * @package    	MercadoLivre
+ * @author      André Fuhrman (andrefuhrman@gmail.com)
+ * @copyright  	Copyright (c) ThirdLevel [http://www.thirdlevel.com.br]
+ * 
+ */
+-->
+
+<config>
+    
+    <tabs>
+        <thirdlevel module="mercadolivre">
+            <label>ThirdLevel</label>
+            <sort_order>110</sort_order>
+        </thirdlevel>
+    </tabs> 
+    
+    
+    <sections>
+        <mercadolivre translate="label comment">
+            <label>Mercado Livre</label>
+            <tab>thirdlevel</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <geral translate="label comment">
+                    <label>Mercadolivre Account Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<license translate="label comment">
+                            <label>Module License Key</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </license>
+                        <app_id translate="label comment">
+                            <label>App Id</label>
+                            <comment>
+                        <![CDATA[
+                        Create and get your at http://applications.mercadolibre.com/          
+                        ]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </app_id>
+                        <app_secret translate="label comment">
+                            <label>App Secret</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                        Create and get your at http://applications.mercadolibre.com/          
+                        ]]>
+                            </comment>
+                        </app_secret>                        
+                        <country translate="label comment">
+                            <label>Mercadolivre Account Country</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_OriginAccount</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </country>
+                        <currency translate="label comment">
+                            <label>Mercadolivre Currency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_Currency</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </currency>
+                        <url translate="label comment">
+                            <label>Mercadolivre Redirect Url</label>
+                            <frontend_type>text</frontend_type>       
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                        Create following the model: <i>{yourstoredomain.com}</i><b>/index.php/mercadolivre/auth</b>       
+                        ]]>
+                            </comment>
+                        </url>
+                        <use_melienvios translate="label comment">
+                            <label>Melienvios is active ?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>   
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </use_melienvios>
+             
+                        
+                       
+                    </fields>
+                </geral>
+                <magento>
+                    <label>Magento Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                       <store_id translate="label comment">
+                        <label>Magento Store</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_Stores</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Select the your Magento Store that MercadoLivre orders will be placed
+                        ]]>
+                            </comment>
+                        </store_id>
+                        <log_email translate="label comment">
+                        <label>Email to receive log in case of error</label>
+                             <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Insert one email to receive the messages in case of some error
+                        ]]>
+                            </comment>
+                        </log_email>
+                        
+                        
+                    </fields>    
+                </magento>
+                <default>
+                    <label>Default Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        Default Configurations
+                        ]]>
+                    </comment>
+                    <fields>
+                        <template translate="label comment"> 
+                        <label>Ads Template</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_Template</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Select the default template that you want to use on default when bulk export products
+                        ]]>
+                            </comment>
+                        </template> 
+                        <freeshipping translate="label comment">
+                        <label>Free Shipping</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Select if your products has free shipping on default
+                        ]]>
+                            </comment>
+                        </freeshipping>
+                        <type translate="label comment">
+                        <label>Ad Type</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_Types</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Select the ad type that you want on default
+                        ]]>
+                            </comment>
+                        </type>
+                        <product_import_quantity translate="label comment">
+                        <label>Use Store Stock Quantity</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Use store product stock when IMPORT ads from Mercadolibre
+                        ]]>
+                            </comment>
+                        </product_import_quantity>
+                        <local_pick_up translate="label comment">
+                        <label>Local PickUp</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Allow local pickup to your orders
+                        ]]>
+                            </comment>
+                        </local_pick_up>
+                        <auto_relist translate="label comment">
+                        <label>Use Auto Relist (beta)</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_relist>
+                        
+                        
+                        
+                    </fields>    
+                </default>
+                <item>
+                  <label>Product Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<smart_stock translate="label comment">
+                        <label>SmartStock (beta)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+	                        <![CDATA[
+	                         Set Yes to Active Smart Stock <b>This is a beta feature, we recommend to test first before use wide</b>
+	                        ]]>
+                            </comment>	
+                    	</smart_stock>
+                    	<smart_stock_qtd translate="label comment">
+                        <label>SmartStock Minimal Quantity</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+	                        <![CDATA[
+	                         Insert Smart Stock minimal quantity
+	                        ]]>
+                            </comment>	
+                    	</smart_stock_qtd>
+                    	<no_manage_stock translate="label comment">
+                        <label>Store without Stock Management</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+	                        <![CDATA[
+	                         If Set "Yes", this module will send to mercadolivre always the maximum quantity possible, no matter what's set on your ad
+	                        ]]>
+                            </comment>	
+                    	</no_manage_stock>
+                        <auto_decrement_store_stock translate="label comment">
+                        <label>Auto decrement Store Stock</label>
+                             <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Set 'Yes' to auto drecrement store stock when a item is sold at MercadoLivre   
+                        ]]>
+                            </comment>
+                        </auto_decrement_store_stock>
+                        <auto_update_mercadolivre_qtd translate="label comment">
+                        <label>Auto Update MercadoLivre Item Quantity based on Store Stock (For Simple Products Only)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Set 'Yes' to auto update item quantity on MercadoLivre based on Store Stock </br></br>
+                         <b>Attention:</b> When a item at MercadoLivre reach <b>ZERO (0)</b>, the item is cloused and a new item has to be created.
+                        ]]>
+                            </comment>
+                        </auto_update_mercadolivre_qtd>
+                        <auto_updated_price translate="label comment">
+                        <label>Auto Update MercadoLivre Item Price Basead on Product Changes (For Simple Products Only) </label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Will follow the priority order:  1) Mercadolivre Product Price, 2) Product Special Price, 3) Product Price
+                        ]]>
+                            </comment>
+                        </auto_updated_price>
+                        <auto_update_image translate="label comment">
+                        <label>Auto Update MercadoLivre Images Basead on Product Changes (For Simple Products Only)</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_update_image>
+                        <close_pause translate="label comment">
+                        <label>Your ads should Close or Pause when Product Stock Reach Zero?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_ClosePause</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </close_pause> 
+                        <auto_update_variation translate="label comment">
+                        <label>Auto Update to Mercadolivre Variations Fields (Image,Price and Qtd) for Configurable Products Only, when has changes at Store</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_update_variation> 
+                        
+                        
+                        
+                        
+                    </fields>
+                </item>
+                <melienvios translate="label comment" module="mercadolivre">
+                    <label>Melienvios Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <frontend_model>mercadolivre/System_Config</frontend_model>
+                    <backend_model>core/config_data</backend_model>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[Choose one of the following Mercadolivre configured services for each delivery Methods, when posting back the tracking code to Mercadolivre, this is for Melienvios only]]>
+                    </comment>
+                </melienvios>
+                <shipping>
+                  <label>Shipping Configuration Others</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>6</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+           				<![CDATA[Choose the shipping module default to be used when your store DO NOT use Melienvios.]]>
+     				</comment>
+                    <fields>
+                         <shippingmethod translate="label comment">
+                            <label>Shipping Module</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_ShippingMethods</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Choose the default Store Module to put in your order when the buyer has manualy informed the shipping cost at Mercadolivre, or chose, 'to be agree'.     
+                        ]]>
+                            </comment>
+                        </shippingmethod>
+                        <default_service translate="label comment">
+                            <label>Mercadolivre Shipping Service</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_ShippingService</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                         Choose one Mercadolivre Service to automatic post Tracking Code when the buyer has informed the shipping cost at Mercadolivre.
+                        ]]>
+                            </comment>
+                         </default_service>
+                         <weight>
+                            <label>Product Weight</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_Weight</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </weight>
+                    </fields>
+                </shipping>
+                <payment>
+                    <label>Payment Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>7</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<send_email_customer translate="label comment">
+                            <label>Send Emails to Customers</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                         <![CDATA[
+                         Only Select 'NO' with you don't want that the store send emails to the customer<br />
+                         <b>Attention:</b>Incomplete Orders will not be Generate.
+                         ]]>
+                            </comment>
+                        </send_email_customer>
+                    	<receive_email_copy translate="label comment">
+                            <label>Receive BBc copy of clients emails</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                         <![CDATA[
+                        Insert one email to receive bbc copy of clients emails (optional)
+                         ]]>
+                            </comment>
+                        </receive_email_copy>
+                        <auto_give_feedback translate="label comment">
+                            <label>Auto Qualify Buyers on Approved and Paid Orders with Positive</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                         <![CDATA[
+                         Auto Give FeedBack on Approved and Paid Orders  
+                         ]]>
+                            </comment>
+                        </auto_give_feedback>
+                        <feedback_message translate="label comment">
+                            <label>FeedBack Message At Approved and Paid Orders</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                         <![CDATA[
+                         To be used on Mercadlivre Orders only when was  <b> not paid by MercadoPago </b>, and the payment is "To be agree with the Seller"  
+                        ]]>
+                            </comment>
+                        </feedback_message>
+     
+                        <paymentmethod translate="label comment">
+                            <label>Payment accepts method for Mercadolivre Checkout</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>Thirdlevel_Mercadolivre_Model_Source_PaymentMethods</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                         <![CDATA[
+                           Use <b>[CTRL]</b> to <b>SELECT</b> more than one payment method to be excluded or <b>DESELECT</b> a payment method.<br /><br />  
+                        ]]>
+                            </comment>
+                        </paymentmethod>
+                        <auto_create_invoice translate="label comment">
+                            <label>Auto Create Invoice</label>
+                            <comment>
+                <![CDATA[
+                <b>Select 'yes'</b> case you want that Magento auto create a invoice for paid orders             
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </auto_create_invoice>
+                        <order_status_new translate="label comment">
+                            <label>Choose the status of new orders</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_new>
+                        <order_status_approved translate="label comment">
+                            <label>Choose the status of approved orders</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_approved>
+                        <order_status_refunded translate="label comment">
+                            <label>Choose the status of refunded orders</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_refunded>
+                        <order_status_in_process translate="label comment">
+                            <label>Choose the status when payment is pending</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_in_process>
+                        <order_status_in_mediation translate="label comment">
+                            <label>Choose the status when client open a mediation</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_in_mediation>
+                        <order_status_rejected translate="label comment">
+                            <label>Choose the status when payment was reject</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_rejected>
+                        <order_status_cancelled translate="label comment">
+                            <label>Choose the status when payment was canceled</label>
+                            <comment>
+                <![CDATA[
+                Go to system -> OrderStatuses and assign a new orders status to 'new' order state to custom with your own orders state name                  
+                ]]>
+                            </comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status_cancelled>    
+                        
+                    </fields>   
+                </payment>
+                <advanced>
+                	<label>Advanced Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>9</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                  
+                	<fields>
+                	<disable_image_ssl translate="label comment">
+                            <label>Disable Image SSL</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                         <![CDATA[
+                         Disable with you are getting problem with no show image on Mercadolivre
+                         
+                        ]]>
+                            </comment>
+                   </disable_image_ssl>
+                   <log translate="label comment">
+                        <label>Enable Calls Log</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                          Show call logs from Store to Mercadolivre, recomend to keep off because this file can reach a big size.
+                          To work is necessary also that configuration > advanced > Log Setting is Enable
+                          File is located in {{base_dir}}/var/thirdlevel_call.log
+                        ]]>
+                            </comment>
+                        </log>
+                        <category_filter translate="label comment">
+                        <label>Disable Category and Ad Count Filter on Create Ad.</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>
+                        <![CDATA[
+                          Disable this, will improve performer on "create ad", but will make lose the features to sort by category
+                        ]]>
+                            </comment>
+                        </category_filter>
+                        <ssl3>
+                        <label>SSL 3 Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ssl3>
+                	</fields>
+                </advanced>
+            </groups>
+        </mercadolivre>  
+   
+        <payment>
+            <groups>
+                <mercadolivre translate="comment label" module="mercadolivre">
+                    <label>Mercado Livre (by MercadoPago)</label>
+                    <sort_order>670</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                         
+                        <title translate="label,comment">
+                            <label>Title</label>
+                            <comment>
+                <![CDATA[
+                  The name that will appear at MercadoLivre paid orders
+                ]]>
+                            </comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </title>
+                    </fields>
+                </mercadolivre>
+            </groups>
+        </payment>
+        
+      <carriers>
+        <groups>
+            <mercadolivre translate="label" module="mercadolivre">
+                <label>MeliEnvios</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>13</sort_order>
+                <show_in_default>1</show_in_default>
+                <show_in_website>1</show_in_website>
+                <show_in_store>1</show_in_store>
+                   <fields>
+                       <title translate="label">
+                            <label>Nome do Meio de Entrega</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        
+                    </fields>
+                </mercadolivre>
+         </groups>
+          </carriers>
+ 
+    </sections>               
+</config>
